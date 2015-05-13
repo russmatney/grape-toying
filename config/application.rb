@@ -15,3 +15,5 @@ Dir[File.expand_path('../../api/*.rb', __FILE__)].each do |f|
 end
 
 require 'api'
+require 'toying_app'
+
