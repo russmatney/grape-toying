@@ -1,5 +1,3 @@
-require 'grape'
+require File.expand_path('../config/environment', __FILE__)
 
-require './server.rb'
-
-run App::API
+run Toying::API
