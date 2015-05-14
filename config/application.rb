@@ -9,6 +9,19 @@ require 'bundler/setup'
 
 Bundler.require :default, ENV['RACK_ENV']
 
+#DB and ActiveRecord
+require 'active_record'
+require 'yaml'
+require 'logger'
+
+dbconfig = YAML::load(File.open(File.expand_path('../database.yml', __FILE__)))
+#TODO: abstract db into env
+ActiveRecord::Base.establish_connection(dbconfig["development"])
+ActiveRecord::Base.logger = Logger.new(STDERR)
+
+class User < ActiveRecord::Base
+end
+
 # require all them api files
 Dir[File.expand_path('../../api/*.rb', __FILE__)].each do |f|
   require f

@@ -11,6 +11,12 @@ module Toying
       end
     end
 
+    resource :users do
+      get do
+        User.all
+      end
+    end
+
   end
 end
 
